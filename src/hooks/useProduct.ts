@@ -42,7 +42,7 @@ export const useProducts = (): UseProductsResponse => {
 
   useEffect(() => {
     fetchProducts(pagination.page);
-  }, [pagination.page]);
+  },[]);
 
   const setPage = (page: number) => {
     if (page > 0 && page <= Math.ceil(pagination.total / pagination.limit)) {
