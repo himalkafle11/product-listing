@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Product } from "../types/product";
 import { getProductList } from "../api/product";
 import { Pagination } from "../types/pagination";
@@ -21,7 +21,7 @@ export const useProducts = (): UseProductsResponse => {
     nextPage: false,
   });
 
-  const fetchProducts = async (page: number) => {
+  const fetchProducts = useCallback(async (page: number) => {
     setLoading(true);
     try {
       const response = await getProductList(page, pagination.limit);
@@ -38,11 +38,11 @@ export const useProducts = (): UseProductsResponse => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [pagination.limit]);
 
   useEffect(() => {
     fetchProducts(pagination.page);
-  },[]);
+  }, [fetchProducts, pagination.page]);
 
   const setPage = (page: number) => {
     if (page > 0 && page <= Math.ceil(pagination.total / pagination.limit)) {
