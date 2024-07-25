@@ -13,7 +13,7 @@ export const createNewCart = async () => {
         },
       }
     );
-    return response.data.data; 
+    return response.data.data;
   } catch (error) {
     console.error("Error creating new cart:", error);
     throw error;
@@ -22,10 +22,8 @@ export const createNewCart = async () => {
 
 export const getCartDetails = async (cartId: string) => {
   try {
-    const response = await axios.get(
-      `${API_URL}/user/cart-details/${cartId}`
-    );
-    return response.data.data
+    const response = await axios.get(`${API_URL}/user/cart-details/${cartId}`);
+    return response.data.data;
   } catch (error) {
     console.error("Error fetching cart details:", error);
     throw error;

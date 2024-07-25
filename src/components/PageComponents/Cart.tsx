@@ -43,7 +43,7 @@ const CartComponent: React.FC = () => {
     }
   };
 
-  const debouncedUpdateCartItem = useDebounce(handleUpdateCartItem, 300);
+  const debouncedUpdateCartItem = useDebounce(handleUpdateCartItem, 200);
 
   if (initLoading || !cartDetails) return <Loader />;
   if (initError) return <div>Error initializing cart: {initError}</div>;
@@ -77,17 +77,17 @@ const CartComponent: React.FC = () => {
             {cartDetails.items.map((item, index) => (
               <div
                 key={index}
-                className="border p-4 rounded-md shadow-md flex md:flex-row flex-col items-center gap-8"
+                className="border p-4 rounded-md shadow-md flex md:flex-row flex-col md:items-center items-start gap-8"
               >
                 <Link to={`/products/${item.product.slug}`}>
                   <img
                     src={item.product.images[0]}
                     alt={item.product.title}
-                    className="flex-1 w-auto h-[40vh] object-cover mb-2"
+                    className="h-96 w-96 object-cover mb-2"
                   />
                 </Link>
                 <div
-                  className="flex-1 flex flex-col gap-2 font-semibold
+                  className="flex flex-col gap-2 font-semibold
 "
                 >
                   <h3 className="text-lg ">

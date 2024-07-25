@@ -13,7 +13,6 @@ export const useInitializeCart = () => {
 
     const existingCartId = localStorage.getItem("cartId");
     if (existingCartId) {
-     
       console.log("Cart is already initialized.");
       setLoading(false);
       return;

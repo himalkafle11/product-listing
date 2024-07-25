@@ -48,7 +48,7 @@ const ProductDetailsPage: React.FC = () => {
     }
   };
 
-  const debouncedAddToCart = useDebounce(handleAddToCart, 300);
+  const debouncedAddToCart = useDebounce(handleAddToCart, 200);
 
   if (loading) return <Loader />;
   if (!product) return <PageNotFound />;

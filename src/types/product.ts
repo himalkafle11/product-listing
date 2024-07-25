@@ -11,10 +11,10 @@ export interface Product {
   ratings?: number;
   totalRatings?: number;
   ratedBy?: number;
-  description:string;
-  ingredient:string;
-  howToUse:string;
-  brand:any;
-  isBestSeller:boolean;
-  status:boolean
+  description: string;
+  ingredient: string;
+  howToUse: string;
+  brand: any;
+  isBestSeller: boolean;
+  status: boolean;
 }

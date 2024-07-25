@@ -21,24 +21,27 @@ export const useProducts = (): UseProductsResponse => {
     nextPage: false,
   });
 
-  const fetchProducts = useCallback(async (page: number) => {
-    setLoading(true);
-    try {
-      const response = await getProductList(page, pagination.limit);
-      setProducts(response.data.docs);
-      setPagination({
-        total: response.data.pagination.total,
-        page: response.data.pagination.page,
-        limit: response.data.pagination.limit,
-        previousPage: response.data.pagination.previousPage,
-        nextPage: response.data.pagination.nextPage,
-      });
-    } catch (error) {
-      console.error("Error fetching products:", error);
-    } finally {
-      setLoading(false);
-    }
-  }, [pagination.limit]);
+  const fetchProducts = useCallback(
+    async (page: number) => {
+      setLoading(true);
+      try {
+        const response = await getProductList(page, pagination.limit);
+        setProducts(response.data.docs);
+        setPagination({
+          total: response.data.pagination.total,
+          page: response.data.pagination.page,
+          limit: response.data.pagination.limit,
+          previousPage: response.data.pagination.previousPage,
+          nextPage: response.data.pagination.nextPage,
+        });
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [pagination.limit]
+  );
 
   useEffect(() => {
     fetchProducts(pagination.page);
